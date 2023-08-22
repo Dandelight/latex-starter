@@ -1,0 +1,30 @@
+CmdLine {
+    -eall -n22 -n30 -e16 -n46 -n21 -n29 -n3 -n17 -n11 -n12
+}
+
+VerbEnvir {
+    lscommand code chktexignore
+}
+
+Silent {
+    \printbibliography \IfValueTF \suppressfloats
+    \flushright \mainmatter \IEEEyessubnumber
+    \endhead \endfoot \endlastfoot \endfirsthead
+    \tabularnewline \ifpdf \ExplSyntaxOn \ExplSyntaxOff
+    \bgroup \egroup \sourcefamily \restoregeometry
+    \itshape \cleardoublepage \IfValueT \pause \blindtext
+    \backmatter
+}
+
+MathEnvir {
+    IEEEeqnarray
+}
+
+WipeArg {
+    \ai:{} \csi:*{} \cs:*{} \carg:{} \cargv:{} \mstX:{}
+    \complexnum:{}
+    \url:{}
+    \citetitle:{}
+    \tikz:[]{}
+    \ltx:{}
+}

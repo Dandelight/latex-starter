@@ -1,0 +1,147 @@
+{
+    "[latex]": {
+        "editor.formatOnSave": false
+    },
+    "files.associations": {
+        ".latexmkrc": "perl"
+    },
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "XeLaTeX -> BibTeX -> XeLaTeX*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "PDFLaTeX",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "PDFLaTeX with Shell Escape",
+            "tools": [
+                "pdflatex-with-shell-escape"
+            ]
+        },
+        {
+            "name": "XeLaTeX",
+            "tools": [
+                "xelatex"
+            ]
+        },
+        {
+            "name": "XeLaTeX with Shell Escape",
+            "tools": [
+                "xelatex-with-shell-escape"
+            ]
+        },
+        {
+            "name": "PDFLaTeX -> BibTeX -> PDFLaTeX*2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "BibTeX",
+            "tools": [
+                "bibtex"
+            ]
+        },
+        {
+            "name": "MakeIndex",
+            "tools": [
+                "makeindex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOC%"
+            ],
+            "command": "latexmk",
+            "name": "latexmk"
+        },
+        {
+            "args": [
+                "%DOC%"
+            ],
+            "command": "xelatex",
+            "name": "xelatex"
+        },
+        {
+            "args": [
+                "--shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "command": "xelatex",
+            "name": "xelatex-with-shell-escape"
+        },
+        {
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "command": "pdflatex",
+            "name": "pdflatex"
+        },
+        {
+            "args": [
+                "--shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "command": "pdflatex",
+            "name": "pdflatex-with-shell-escape"
+        },
+        {
+            "args": [
+                "%DOCFILE%"
+            ],
+            "command": "bibtex",
+            "name": "bibtex"
+        },
+        {
+            "args": [
+                "%DOCFILE%"
+            ],
+            "command": "makeindex",
+            "name": "makeindex"
+        }
+    ],
+    "latex-workshop.synctex.afterBuild.enabled": true,
+    "latex-workshop.view.pdf.invert": 0.9,
+    "latex-workshop.view.pdf.invertMode.brightness": 0.7,
+    "latex-workshop.view.pdf.invertMode.enabled": "auto",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.linting.chktex.enabled": true,
+    "workbench.editorAssociations": {
+        "*.pdf": "latex-workshop-pdf-hook"
+    }
+}
