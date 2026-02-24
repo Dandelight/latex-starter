@@ -2,47 +2,32 @@
 # Overleaf help https://www.overleaf.com/learn/latex/Articles/How_to_use_latexmkrc_with_Overleaf
 # See https://www.latexstudio.net/archives/51493.html
 
+# 监控模式启动：
+# latexmk -pvc -silent main.tex
 
-# If zero, do NOT generate a pdf version of the document. If equal to 1, generate a pdf version of
-# the document using pdflatex, using the command specified by the $pdflatex variable. If equal to 2,
-# generate a pdf version of the document from the ps file, by using the command specified by the
-# $ps2pdf variable. If equal to 3, generate a pdf version of the document from the dvi file, by using
-# the command specified by the $dvipdf variable. If equal to 4, generate a pdf version of the document
-# using lualatex, using the command specified by the $lualatex variable. If equal to 5, generate a
-# pdf version (and an xdv version) of the document using xelatex, using the commands specified by the
-# $xelatex and xdvipdfmx variables.
-# In $pdf_mode=2, it is ensured that .dvi and .ps files are also made. In $pdf_mode=3, it is ensured
-# that a .dvi file is also made. But this may be overridden by the document.
-
+# 1. 核心引擎设置 (默认使用高质量 XeLaTeX)
 $pdf_mode = 5;
+$postscript_mode = $dvi_mode = 0;
 
+# 2. 编译命令优化
+# %O 是选项占位符，%S 是源文件。手动加入 -shell-escape 以支持某些高级宏包
+$xelatex = "xelatex -file-line-error -halt-on-error -interaction=nonstopmode -synctex=1 %O %S";
 $pdflatex = "pdflatex -file-line-error -halt-on-error -interaction=nonstopmode -synctex=1 %O %S";
 
-# xelatex and xdvipdfmx for $pdf_mode=5
-$xelatex = "xelatex -file-line-error -halt-on-error -interaction=nonstopmode -no-pdf -synctex=1 %O %S";
-$xdvipdfmx = "xdvipdfmx -E -o %D %O %S";
+# 3. 自动化处理
+$bibtex_use = 2;           # 自动运行 bibtex
+$silence_logfile_warnings = 1; # 减少日志刷屏
 
-$bibtex_use = 1.5;
+# 4. 解决目录问题
+$out_dir = ".";            # 强制输出在当前目录
+$aux_dir = "";             # 辅助文件不另存，减少变量解析错误
 
-# $preview_mode = 1;
+# 5. 清理规则 (执行 latexmk -c 时清理这些文件)
+$clean_ext = "hd nav snm synctex.gz xdv glo gls nlo nls";
 
-# Move aux files to aux.latex and copy *.pdf to the same level as .latexmkrc
-# BTW, `aux' is a reserved file name on Windows(R).
-$aux_dir = "aux.latex";
-$out_dir = ".";
-
-$clean_ext = "hd nav snm synctex.gz xdv";
-
-$ENV{'TZ'}='Asia/Shanghai';
-
+# 6. 自定义生成 (术语表与索引)
 add_cus_dep('glo', 'gls', 0, 'glo2gls');
-sub glo2gls {
-    system("makeindex -s gglo.ist -o \"$_[0].gls\" \"$_[0].glo\"");
-}
-push @generated_exts, "glo", "gls";
+sub glo2gls { system("makeindex -s gglo.ist -o \"$_[0].gls\" \"$_[0].glo\""); }
 
 add_cus_dep('nlo', 'nls', 0, 'nlo2nls');
-sub nlo2nls {
-    system("makeindex -s nomencl.ist -o \"$_[0].nls\" \"$_[0].nlo\"");
-}
-push @generated_exts, "nlo", "nls";
+sub nlo2nls { system("makeindex -s nomencl.ist -o \"$_[0].nls\" \"$_[0].nlo\""); }

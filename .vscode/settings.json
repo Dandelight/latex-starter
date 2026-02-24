@@ -1,10 +1,15 @@
 {
     "[latex]": {
+        "editor.defaultFormatter": "James-Yu.latex-workshop",
         "editor.formatOnSave": true,
         "editor.formatOnSaveMode": "file",
-        "editor.defaultFormatter": "James-Yu.latex-workshop"
+        "editor.unicodeHighlight.nonBasicASCII": false
     },
     "diffEditor.codeLens": true,
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "*.tex": "${capture}.aux,${capture}.bbl,${capture}.blg,${capture}.fdb_latexmk,${capture}.fls,${capture}.log,${capture}.out,${capture}.pdf,${capture}.synctex.gz,${capture}.synctex(busy),${capture}.toc,${capture}.xdv,${capture}.lof,${capture}.lot,,${capture}.dvi"
+    },
     "files.associations": {
         ".latexmkrc": "perl"
     },
@@ -137,15 +142,15 @@
             "name": "makeindex"
         }
     ],
-    "latex-workshop.synctex.afterBuild.enabled": true,
     // Turn on for dark mode PDF
     // "latex-workshop.view.pdf.invert": 0.9,
     // "latex-workshop.view.pdf.invertMode.brightness": 0.7,
     // "latex-workshop.view.pdf.invertMode.enabled": "auto",
     // "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.linting.chktex.enabled": true,
+    "latex-workshop.synctex.afterBuild.enabled": true,
+    "window.autoDetectColorScheme": true,
     "workbench.editorAssociations": {
         "*.pdf": "latex-workshop-pdf-hook"
-    },
-    "window.autoDetectColorScheme": true
+    }
 }

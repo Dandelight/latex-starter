@@ -1,0 +1,14 @@
+{
+    "Figure with bicaption": {
+        "prefix": "bicap",
+        "body": [
+            "\\begin{figure}[${1:htbp}]",
+            "    \\centering",
+            "    \\includegraphics[width=${2:1}\\textwidth]{${3:figure}}",
+            "    \\bicaption{${4:中文标题}}{${5:English title}}\\label{fig:${6:label}}",
+            "\\end{figure}",
+            "$0"
+        ],
+        "description": "Insert figure environment with bicaption"
+    }
+}
