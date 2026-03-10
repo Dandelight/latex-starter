@@ -1,0 +1,44 @@
+%%
+%% ctex-fontset-founderfree.def - 方正免费四件套
+%% 兼容标准 fontset 加载方式，不依赖 expl3 内部命令
+%%
+
+\ProvidesFile{ctex-fontset-founderfree.def}[2024/01/01 v1.0 Founder Free Fonts]
+
+% 确保 xeCJK 已加载（ctex 会自动处理）
+\ifdefined\setCJKmainfont
+\else
+  \RequirePackage{xeCJK}
+\fi
+
+% XeLaTeX/LuaLaTeX 配置
+\setCJKmainfont{FZShuSong-Z01}[
+    BoldFont       = FZHei-B01,      % 无小标宋，用黑体代替
+    ItalicFont     = FZKai-Z03,
+    BoldItalicFont = FZHei-B01
+]
+
+\setCJKsansfont{FZHei-B01}[
+    BoldFont   = FZHei-B01,
+    ItalicFont = FZKai-Z03
+]
+
+\setCJKmonofont{FZFangSong-Z02}
+
+% 定义字体族（供 \CJKfamily 使用）
+\setCJKfamilyfont{zhsong}{FZShuSong-Z01}[BoldFont=FZHei-B01]
+\setCJKfamilyfont{zhhei}{FZHei-B01}
+\setCJKfamilyfont{zhkai}{FZKai-Z03}
+\setCJKfamilyfont{zhfs}{FZFangSong-Z02}
+
+% 提供传统切换命令（兼容 CTeX 习惯）
+\NewDocumentCommand \songti   { } { \CJKfamily{zhsong} }
+\NewDocumentCommand \heiti    { } { \CJKfamily{zhhei}  }
+\NewDocumentCommand \kaishu   { } { \CJKfamily{zhkai}  }
+\NewDocumentCommand \fangsong { } { \CJKfamily{zhfs}   }
+
+% 注意：以下命令因字体缺失被定义为空或替代
+\NewDocumentCommand \lishu    { } { \CJKfamily{zhkai} }  % 无隶书，用楷体代替
+\NewDocumentCommand \youyuan  { } { \CJKfamily{zhhei} }  % 无圆体，用黑体代替
+
+\endinput

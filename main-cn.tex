@@ -1,0 +1,25 @@
+\documentclass[a4paper,zihao=-4,fontset=founderfree]{ctexart}
+
+% 设置西文字体为 Times New Roman
+% \setmainfont{Times New Roman}
+% \setsansfont{Arial}
+% \setmonofont{Courier New}
+% 但 Times New Roman 商业不免费，可以使用 TeX Live 自带的 Tex Gyre 系列
+\setmainfont{TeX Gyre Termes}      % 正文：Times 风格
+\setsansfont{TeX Gyre Heros}       % 无衬线：Helvetica 风格
+\setmonofont{TeX Gyre Cursor}      % 等宽：Courier 风格
+
+% 定义局部纯正加粗，应对格式规范中“必须是加粗宋体/加粗黑体”的要求
+\setCJKfamilyfont{TrueBoldSong}[AutoFakeBold=5]{FZShuSong-Z01}
+\setCJKfamilyfont{TrueBoldHei}[AutoFakeBold=3]{FZHei-B01}
+
+\title{\LaTeX{} 漫游指南}
+
+\author{佚名}
+\date{\today}
+
+\begin{document}
+    \maketitle
+
+    你好，\textbf{世界}！
+\end{document}
